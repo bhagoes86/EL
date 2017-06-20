@@ -1,0 +1,33 @@
+{% extends "layout-private.html" %}
+
+{% block title %}
+Feedback - {{ parent() }}
+{% endblock %}
+
+{% block content %}
+<div class="module">
+    <div class="module-head">
+        
+    </div>
+    <div class="module-body">
+        {{ get_flashdata('feedback')|raw }}
+
+        {{ form_open('feedback/add', {'class' : 'form-horizontal row-fluid'})|raw }}
+            <div class="control-group">
+                <label class="control-label">Isi Feedback <span class="text-error">*</span></label>
+                <div class="controls">
+                    <input type="text" name="isi_feedback" class="span8" value="{{ set_value('message') }}">
+                    <br>{{ form_error('isi_feedback')|raw }}
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <a href="{{ site_url('') }}" class="btn">Batal</a>
+                </div>
+            </div>
+        {{ form_close()|raw }}
+
+    </div>
+</div>
+{% endblock %}
